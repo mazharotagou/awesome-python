@@ -1,0 +1,22 @@
+<!doctype html>
+<title>Portfolio Summary</title>
+<h1>Wheel Strategy Portfolio</h1>
+<p>FX USD→AUD rate: {{ fx }}</p>
+<table border="1" cellpadding="5">
+  <tr><th>Ticker</th><th>Shares</th><th>Cost Basis (USD)</th><th>Cost Basis (AUD)</th><th>Unrealized P/L USD</th><th>Unrealized P/L AUD</th><th>Realized P/L USD</th><th>Realized P/L AUD</th></tr>
+  {% for p in positions %}
+  <tr>
+    <td>{{ p.ticker }}</td>
+    <td>{{ p.shares }}</td>
+    <td>{{ p.cost_basis_usd or '' }}</td>
+    <td>{{ p.cost_basis_aud or '' }}</td>
+    <td>{{ p.unrealized_usd or '' }}</td>
+    <td>{{ p.unrealized_aud or '' }}</td>
+    <td>{{ p.realized_usd or '' }}</td>
+    <td>{{ p.realized_aud or '' }}</td>
+  </tr>
+  {% endfor %}
+</table>
+<p><a href="{{ url_for('add_trade') }}">Add Trade</a></p>
+<h2>Performance vs S&P 500</h2>
+<img src="{{ url_for('static', filename='performance.png') }}" alt="performance chart">

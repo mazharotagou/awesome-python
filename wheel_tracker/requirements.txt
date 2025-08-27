@@ -1,0 +1,5 @@
+flask
+forex-python
+yfinance
+matplotlib
+pandas
